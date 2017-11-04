@@ -89,7 +89,7 @@ config = {
     # This is stuff like updating source repositories. The initial
     # download of course can't be supressed.
     'prefer_binary_dependencies': True,  # Work in progress
-    'optimize': False,  # activate link-time code generation and other optimization.
+    'optimize': True,  # activate link-time code generation and other optimization.
     # This massively increases build time but produces smaller
     # binaries and marginally faster code
     'Installer': True,  # Used to create installer at end of build, Forces everything to be built
@@ -101,7 +101,7 @@ config = {
     'Work_Author': 'Hugues92',  # yourself
 
     'qt_version': '5.9',  # currently evolving
-    'qt_minor_version': '1',  # place the qt minor version here if only it is not zero, otherwise leave blank
+    'qt_minor_version': '2',  # place the qt minor version here if only it is not zero, otherwise leave blank
     'pyqt_version': '5.9',  # pyqt version doesn't always match qt. So it is now a seperate config
     'openssl_version': '1.0.2L',  # changes often, so better to edit here
     'zlib_version': '1.2.11',  # changes often, so better to edit here
