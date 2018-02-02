@@ -174,7 +174,9 @@ def visual_studio(vc_version):
     config["paths"]["visual_studio"] = get_visual_studio_2015_or_less(vc_version) if vc_version < "15.0" \
         else get_visual_studio_2017_or_more(vc_version)
     if not config["paths"]["visual_studio"]:
-        logging.error("Unable to find vcvarsall.bat, please make sure you have 'Common C++ tools' Installed")
+        logging.error("Unable to find vcvarsall.bat, please make sure you have 'Common C++ tools' Installed."
+          " If you have changed the default installation folder for VS please set the 'vc_CustomInstallPath' in the config.py file"
+          " to the folder you installed VS to (this folder should contain a 'VC' subfolder).")
         sys.exit(1)
 
 
@@ -216,8 +218,10 @@ def get_qt_install(qt_version, qt_minor_version, vc_version):
 
     try:
         for baselocation in program_files_folders:
-            p = os.path.join(baselocation, "Qt", "{}".format(qt_version + "." + qt_minor_version
-                                                             if qt_minor_version != '' else qt_version),
+            p = os.path.join(baselocation, "Qt", "Qt{}".format(qt_version + "." + qt_minor_version
+                                                               if qt_minor_version != '' else qt_version),
+                             "{}".format(qt_version + "." + qt_minor_version
+                                         if qt_minor_version != '' else qt_version),
                              "msvc{0}_64".format(vc_year(vc_version)))
             f = os.path.join(p, "bin", "qmake.exe")
             if os.path.isfile(f):
